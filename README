@@ -1,0 +1,56 @@
+# README #
+
+**phparess** is a set of PHP classes for generating RSS content, based on the 2.0 spec. It
+consists of three public classes that are used to define feed data:
+
+ - _phparess_ represents a complete RSS feed
+ - _phparess_channel_ represents the channel of an RSS feed
+ - _phparess_item_ represents an individual item in the channel
+ 
+Both the channel and individual item can be created with their constructor, passing in
+an array of spec-defined properties to assign.
+ 
+## Channels ##
+ 
+For example, I can create a new channel by saying:
+
+	$channel = new phparess_channel(array(
+		"title"=>"tylerchr's projects",
+		"link"=>"http://github.com/tylerchr",
+		"description"=>"tylerchr writes code on github"
+	));
+	
+We can define additional properties, such as `language,` `copyright,` and `lastBuildDate`
+the same way.
+
+## Items ##
+
+Items are created identically to channels, by using the constructor:
+
+ 	$item = new phparess_item(array(
+		"title"=>"phparess (tylerchr project)",
+		"link"=>"http://github.com/tylerchr/phparess",
+		"description"=>"phparess is for generating simple RSS content"
+	));
+
+Again, additional item properties can be added into the array, given that they are part
+of the RSS 2.0 spec. Non-specced properties will not be added.
+
+We add items to our channel by saying `$channel->addItem($item)` and if we want to add
+many items at once, we can say `$channel->addItems($items)` passing in an array of
+`phparess_item` objects.
+
+## The final feed ##
+
+When we want to get the complete feed, we create a `phparess` object, set the channel, and
+then we can echo it back out. This is trivial, and to be true to spec, we should add a MIME
+type declaration at the top:
+
+	header('Content-type: application/rss+xml');	
+	$rss = new phparess();
+	$rss->setChannel($channel);
+	echo $rss;
+	
+## Feedback ##
+
+Feedback is welcome, but keep in mind that this is a work in progress.
