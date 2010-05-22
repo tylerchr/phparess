@@ -1,18 +1,22 @@
 <?php
 
 /*
+	-- author --
 	AUTHOR:		Tyler Christensen
 	DATE:		20 May 2010
 	CONTACT:	codeprinciples.com
 				github.com/tylerchr
 				@slasht
 				
+	-- license --				
 	LICENSE:	MIT
 				http://www.opensource.org/licenses/mit-license.php
 				
 				Essentially, you're free to use this code for any purpose, commercial or
 				not, as long as you retain this notice in the source code.
-				
+	
+	-- version --			
+	UPDATED:	21 May 2010
 	VERSION:	0.1
 */
 
