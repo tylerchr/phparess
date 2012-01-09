@@ -151,6 +151,9 @@ class phparess_channel {
 
 	private function _tab_rows($string) {
 		$rows = explode("\n", $string);
+
+        $new_rows = array();
+
 		foreach ($rows as $value) {
 			$new_rows[] = "\t" . $value . "\n";
 		}
@@ -298,7 +301,12 @@ class _phparess_xml_tag {
 
 	public function __toString() {
 
+        $attribute_string = "";
+
 		if (count($this->attributes) > 0) {
+
+            $attribute = array();
+
 			foreach ($this->attributes as $key => $value) {
 				$attribute[] = $key . "=\"" . $this->_clear_value($value) . "\"";
 			}
