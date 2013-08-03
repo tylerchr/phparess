@@ -56,7 +56,7 @@ class Channel {
                 switch ($key) {
 
                     case "atom:link":
-                        $value = new _phparess_xml_tag($key, "", array(
+                        $value = new Tag($key, "", array(
                                 'rel' => "self",
                                 'type' => "application/rss+xml",
                                 'href' => $value)
@@ -64,7 +64,7 @@ class Channel {
                         break;
 
                     default:
-                        $value = new _phparess_xml_tag($key, $value);
+                        $value = new Tag($key, $value);
 
                 }
 
