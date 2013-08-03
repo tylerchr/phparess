@@ -9,28 +9,33 @@
 
 namespace Tylerchr\Phparess;
 
-class Channel {
+class Channel
+{
 
     private $properties;
     private $items;
 
-    public function __construct($properties=array()) {
+    public function __construct($properties = array())
+    {
 
         $this->properties = null;
 
-        if (	array_key_exists("title", $properties) &&
+        if (array_key_exists("title", $properties) &&
             array_key_exists("link", $properties) &&
-            array_key_exists("description", $properties)) {
+            array_key_exists("description", $properties)
+        ) {
 
             foreach ($properties as $key => $value) {
-                if ($this->_is_legal_key($key))
+                if ($this->_is_legal_key($key)) {
                     $this->properties[$key] = $value;
+                }
             }
         }
 
     }
 
-    public function addItems($item_array) {
+    public function addItems($item_array)
+    {
         if (count($item_array) > 0) {
             foreach ($item_array as $value) {
                 $this->addItem($value);
@@ -38,17 +43,15 @@ class Channel {
         }
     }
 
-    public function addItem($item) {
-        if (is_object($item) && get_class($item) == "phparess_item") {
-            $this->items[] = $item;
-        } else {
-            echo "[outside criteria]\n";
-        }
+    public function addItem(Item $item)
+    {
+        $this->items[] = $item;
     }
 
     // reading the data
 
-    public function __toString() {
+    public function __toString()
+    {
 
         if (!is_null($this->properties)) {
             foreach ($this->properties as $key => $value) {
@@ -57,9 +60,10 @@ class Channel {
 
                     case "atom:link":
                         $value = new Tag($key, "", array(
-                                'rel' => "self",
+                                'rel'  => "self",
                                 'type' => "application/rss+xml",
-                                'href' => $value)
+                                'href' => $value
+                            )
                         );
                         break;
 
@@ -83,15 +87,18 @@ class Channel {
 
     }
 
-    public function channel() {
+    public function channel()
+    {
         return $this->allItems();
     }
 
-    public function channel_tabbed() {
+    public function channel_tabbed()
+    {
         return $this->_tab_rows($this->__toString());
     }
 
-    public function allItems($pre_tab=false) {
+    public function allItems($pre_tab = false)
+    {
         if (count($this->items) > 0) {
             $items = implode("", $this->items);
             if ($pre_tab) {
@@ -106,7 +113,8 @@ class Channel {
 
     // internal methods
 
-    private function _tab_rows($string) {
+    private function _tab_rows($string)
+    {
         $rows = explode("\n", $string);
 
         $new_rows = array();
@@ -117,7 +125,8 @@ class Channel {
         return implode("", $new_rows);
     }
 
-    private function _is_legal_key($key) {
+    private function _is_legal_key($key)
+    {
         $legal_keys = array(
             "title",
             "link",
