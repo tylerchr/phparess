@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>phparess test feed</title>
+		<link>http://github.com/tylerchr/phparess</link>
+		<description>A set of PHP classes for writing basic RSS feeds</description>
+		<item>
+			<title>This is the title</title>
+			<link><![CDATA[http://www.google.com/=This_(is)_it-2/!@#$%^&*()_+]]></link>
+			<description>The description of _my_ awesome site</description>
+		</item>
+		<item>
+			<title>Secondary item</title>
+			<link>http://www.apple.com/macbookpro</link>
+			<description>Apple has a cool laptop product.</description>
+		</item>
+		<item>
+			<title>Tertiary item</title>
+			<link>http://codeprinciples.com/#page2</link>
+			<description><![CDATA[Apple has a <b>cool</b> laptop product.]]></description>
+		</item>
+		
+	
+	</channel>
+	
+
+</rss>
