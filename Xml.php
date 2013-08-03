@@ -21,7 +21,7 @@ class Xml
                 echo $value;
             } else {
                 if (is_array($value)) {
-                    $value = $this->CompileXML($value);
+                    $this->CompileXML($value);
                 }
             }
 
