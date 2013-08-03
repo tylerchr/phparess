@@ -11,7 +11,6 @@ namespace Tylerchr\Phparess;
 
 class Item
 {
-
     private $details;
 
     public function __construct($details)
@@ -42,11 +41,11 @@ class Item
 
                 switch ($key) {
                     case "source":
-                        $value = new _phparess_xml_tag($key, $value['content'], array('url' => $value['url']));
+                        $value = new Tag($key, $value['content'], array('url' => $value['url']));
                         break;
 
                     default:
-                        $value = new _phparess_xml_tag($key, $value);
+                        $value = new Tag($key, $value);
                 }
 
 
