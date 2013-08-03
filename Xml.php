@@ -28,14 +28,4 @@ class Xml
             echo "</" . $key . ">";
         }
     }
-
-    //
-    // Internal methods
-    //
-
-    private function _compile_tag($tag, $contents)
-    {
-        return "<" . $tag . ">" . $contents . "</" . $tag . ">";
-    }
-
 }
