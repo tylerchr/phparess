@@ -14,6 +14,10 @@ class Feed
 
     private $rss_version;
     private $atom;
+
+    /**
+     * @var Channel
+     */
     private $channel;
 
     public function __construct($rss_version = "2.0", $atom = true)
@@ -24,9 +28,7 @@ class Feed
 
     public function setChannel(Channel $channel)
     {
-        if (is_object($channel) && get_class($channel) == "phparess_channel") {
-            $this->channel = $channel;
-        }
+        $this->channel = $channel;
     }
 
     public function __toString()
