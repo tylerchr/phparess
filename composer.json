@@ -1,0 +1,21 @@
+{
+    "name": "tylerchr/phparess",
+    "description": "RSS feed generator for PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tyler Christensen",
+            "email": "tyler9xp@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-0": {
+            "Tylerchr\\Phparess\\": ""
+        }
+    },
+    "target-dir": "Tylerchr/Phparess"
+}
