@@ -3,9 +3,9 @@
 **phparess** is a set of PHP classes for generating RSS content, based on the 2.0 spec. It
 consists of three public classes that are used to define feed data:
 
- - _phparess_ represents a complete RSS feed
- - _phparess_channel_ represents the channel of an RSS feed
- - _phparess_item_ represents an individual item in the channel
+ - _Feed_ represents a complete RSS feed
+ - _Channel_ represents the channel of an RSS feed
+ - _Item_ represents an individual item in the channel
  
 Both the channel and individual item can be created with their constructor, passing in
 an array of spec-defined properties to assign.
@@ -14,7 +14,7 @@ an array of spec-defined properties to assign.
  
 For example, I can create a new channel by saying:
 
-	$channel = new phparess_channel(array(
+	$channel = new Channel(array(
 		"title"=>"tylerchr's projects",
 		"link"=>"http://github.com/tylerchr",
 		"description"=>"tylerchr writes code on github"
@@ -27,7 +27,7 @@ the same way.
 
 Items are created identically to channels, by using the constructor:
 
- 	$item = new phparess_item(array(
+ 	$item = new Item(array(
 		"title"=>"phparess (tylerchr project)",
 		"link"=>"http://github.com/tylerchr/phparess",
 		"description"=>"phparess is for generating simple RSS content"
@@ -38,16 +38,16 @@ of the RSS 2.0 spec. Non-specced properties will not be added.
 
 We add items to our channel by saying `$channel->addItem($item)` and if we want to add
 many items at once, we can say `$channel->addItems($items)` passing in an array of
-`phparess_item` objects.
+`Item` objects.
 
 ## The final feed ##
 
-When we want to get the complete feed, we create a `phparess` object, set the channel, and
+When we want to get the complete feed, we create a `Feed` object, set the channel, and
 then we can echo it back out. This is trivial, and to be true to spec, we should add a MIME
 type declaration at the top:
 
 	header('Content-type: application/rss+xml');	
-	$rss = new phparess();
+	$rss = new Feed();
 	$rss->setChannel($channel);
 	echo $rss;
 	
