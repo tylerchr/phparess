@@ -13,7 +13,7 @@ class Channel
 {
 
     private $properties;
-    private $items;
+    private $items = array();
 
     public function __construct($properties = array())
     {
